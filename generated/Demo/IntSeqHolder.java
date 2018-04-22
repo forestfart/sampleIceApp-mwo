@@ -20,14 +20,18 @@
 
 package Demo;
 
-public interface _CalcOperations
+public final class IntSeqHolder
 {
-    long add(int a, int b, Ice.Current __current);
+    public
+    IntSeqHolder()
+    {
+    }
 
-    long subtract(int a, int b, Ice.Current __current);
+    public
+    IntSeqHolder(int[] value)
+    {
+        this.value = value;
+    }
 
-    long multiply(int a, int b, Ice.Current __current);
-
-    double avg(int[] is, Ice.Current __current)
-        throws NoData;
+    public int[] value;
 }

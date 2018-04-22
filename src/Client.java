@@ -25,7 +25,7 @@ public class Client
 			// 2. Uzyskanie referencji obiektu na podstawie linii w pliku konfiguracyjnym
 			//Ice.ObjectPrx base = communicator.propertyToProxy("Calc1.Proxy");
 			// 2. To samo co powy¿ej, ale mniej ³adnie
-			Ice.ObjectPrx base = communicator.stringToProxy("calc/calc11:tcp -h 172.29.134.6 -p 10000:udp -h 172.29.134.6 -p 10000:ssl -h 172.29.134.6 -p 10001");
+			Ice.ObjectPrx base = communicator.stringToProxy("calc/calc11:tcp -h localhost -p 10000:udp -h localhost -p 10000:ssl -h localhost -p 10001");
 
 			// 3. Rzutowanie, zawê¿anie
 			CalcPrx obj = CalcPrxHelper.checkedCast(base);
@@ -65,6 +65,11 @@ public class Client
 					if (line.equals("multiply"))
 					{
 						long r = obj.multiply(7, 8);
+						System.out.println("RESULT = " + r);
+					}
+					if (line.equals("average"))
+					{
+						double r = obj.avg(new int[3]);
 						System.out.println("RESULT = " + r);
 					}
 	                else if(line.equals("o"))

@@ -30,4 +30,8 @@ public interface _CalcDel extends Ice._ObjectDel
 
     long multiply(int a, int b, java.util.Map<String, String> __ctx, Ice.Instrumentation.InvocationObserver __obsv)
         throws IceInternal.LocalExceptionWrapper;
+
+    double avg(int[] is, java.util.Map<String, String> __ctx, Ice.Instrumentation.InvocationObserver __obsv)
+        throws IceInternal.LocalExceptionWrapper,
+               NoData;
 }

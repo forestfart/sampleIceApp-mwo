@@ -157,6 +157,148 @@ public final class CalcPrxHelper extends Ice.ObjectPrxHelperBase implements Calc
         }
     }
 
+    private static final String __avg_name = "avg";
+
+    public double avg(int[] is)
+        throws NoData
+    {
+        return avg(is, null, false);
+    }
+
+    public double avg(int[] is, java.util.Map<String, String> __ctx)
+        throws NoData
+    {
+        return avg(is, __ctx, true);
+    }
+
+    private double avg(int[] is, java.util.Map<String, String> __ctx, boolean __explicitCtx)
+        throws NoData
+    {
+        if(__explicitCtx && __ctx == null)
+        {
+            __ctx = _emptyContext;
+        }
+        final Ice.Instrumentation.InvocationObserver __observer = IceInternal.ObserverHelper.get(this, "avg", __ctx);
+        int __cnt = 0;
+        try
+        {
+            while(true)
+            {
+                Ice._ObjectDel __delBase = null;
+                try
+                {
+                    __checkTwowayOnly("avg");
+                    __delBase = __getDelegate(false);
+                    _CalcDel __del = (_CalcDel)__delBase;
+                    return __del.avg(is, __ctx, __observer);
+                }
+                catch(IceInternal.LocalExceptionWrapper __ex)
+                {
+                    __handleExceptionWrapper(__delBase, __ex, __observer);
+                }
+                catch(Ice.LocalException __ex)
+                {
+                    __cnt = __handleException(__delBase, __ex, null, __cnt, __observer);
+                }
+            }
+        }
+        finally
+        {
+            if(__observer != null)
+            {
+                __observer.detach();
+            }
+        }
+    }
+
+    public Ice.AsyncResult begin_avg(int[] is)
+    {
+        return begin_avg(is, null, false, null);
+    }
+
+    public Ice.AsyncResult begin_avg(int[] is, java.util.Map<String, String> __ctx)
+    {
+        return begin_avg(is, __ctx, true, null);
+    }
+
+    public Ice.AsyncResult begin_avg(int[] is, Ice.Callback __cb)
+    {
+        return begin_avg(is, null, false, __cb);
+    }
+
+    public Ice.AsyncResult begin_avg(int[] is, java.util.Map<String, String> __ctx, Ice.Callback __cb)
+    {
+        return begin_avg(is, __ctx, true, __cb);
+    }
+
+    public Ice.AsyncResult begin_avg(int[] is, Callback_Calc_avg __cb)
+    {
+        return begin_avg(is, null, false, __cb);
+    }
+
+    public Ice.AsyncResult begin_avg(int[] is, java.util.Map<String, String> __ctx, Callback_Calc_avg __cb)
+    {
+        return begin_avg(is, __ctx, true, __cb);
+    }
+
+    private Ice.AsyncResult begin_avg(int[] is, java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
+    {
+        __checkAsyncTwowayOnly(__avg_name);
+        IceInternal.OutgoingAsync __result = new IceInternal.OutgoingAsync(this, __avg_name, __cb);
+        try
+        {
+            __result.__prepare(__avg_name, Ice.OperationMode.Normal, __ctx, __explicitCtx);
+            IceInternal.BasicStream __os = __result.__startWriteParams(Ice.FormatType.DefaultFormat);
+            IntSeqHelper.write(__os, is);
+            __result.__endWriteParams();
+            __result.__send(true);
+        }
+        catch(Ice.LocalException __ex)
+        {
+            __result.__exceptionAsync(__ex);
+        }
+        return __result;
+    }
+
+    public double end_avg(Ice.AsyncResult __result)
+        throws NoData
+    {
+        Ice.AsyncResult.__check(__result, this, __avg_name);
+        boolean __ok = __result.__wait();
+        try
+        {
+            if(!__ok)
+            {
+                try
+                {
+                    __result.__throwUserException();
+                }
+                catch(NoData __ex)
+                {
+                    throw __ex;
+                }
+                catch(Ice.UserException __ex)
+                {
+                    throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
+                }
+            }
+            IceInternal.BasicStream __is = __result.__startReadParams();
+            double __ret;
+            __ret = __is.readDouble();
+            __result.__endReadParams();
+            return __ret;
+        }
+        catch(Ice.LocalException ex)
+        {
+            Ice.Instrumentation.InvocationObserver __obsv = __result.__getObserver();
+            if(__obsv != null)
+            {
+                __obsv.failed(ex.ice_name());
+            }
+            throw ex;
+        }
+    }
+
     private static final String __multiply_name = "multiply";
 
     public long multiply(int a, int b)

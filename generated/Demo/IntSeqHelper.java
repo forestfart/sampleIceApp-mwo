@@ -20,14 +20,19 @@
 
 package Demo;
 
-public interface _CalcOperations
+public final class IntSeqHelper
 {
-    long add(int a, int b, Ice.Current __current);
+    public static void
+    write(IceInternal.BasicStream __os, int[] __v)
+    {
+        __os.writeIntSeq(__v);
+    }
 
-    long subtract(int a, int b, Ice.Current __current);
-
-    long multiply(int a, int b, Ice.Current __current);
-
-    double avg(int[] is, Ice.Current __current)
-        throws NoData;
+    public static int[]
+    read(IceInternal.BasicStream __is)
+    {
+        int[] __v;
+        __v = __is.readIntSeq();
+        return __v;
+    }
 }

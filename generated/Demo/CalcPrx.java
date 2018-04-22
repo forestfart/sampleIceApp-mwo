@@ -75,4 +75,25 @@ public interface CalcPrx extends Ice.ObjectPrx
     public Ice.AsyncResult begin_multiply(int a, int b, java.util.Map<String, String> __ctx, Callback_Calc_multiply __cb);
 
     public long end_multiply(Ice.AsyncResult __result);
+
+    public double avg(int[] is)
+        throws NoData;
+
+    public double avg(int[] is, java.util.Map<String, String> __ctx)
+        throws NoData;
+
+    public Ice.AsyncResult begin_avg(int[] is);
+
+    public Ice.AsyncResult begin_avg(int[] is, java.util.Map<String, String> __ctx);
+
+    public Ice.AsyncResult begin_avg(int[] is, Ice.Callback __cb);
+
+    public Ice.AsyncResult begin_avg(int[] is, java.util.Map<String, String> __ctx, Ice.Callback __cb);
+
+    public Ice.AsyncResult begin_avg(int[] is, Callback_Calc_avg __cb);
+
+    public Ice.AsyncResult begin_avg(int[] is, java.util.Map<String, String> __ctx, Callback_Calc_avg __cb);
+
+    public double end_avg(Ice.AsyncResult __result)
+        throws NoData;
 }

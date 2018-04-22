@@ -7,6 +7,7 @@
 //
 // **********************************************************************
 
+import Demo.NoData;
 import Demo._CalcDisp;
 import Ice.Current;
 
@@ -31,6 +32,16 @@ public class CalcI extends _CalcDisp
 	public long multiply(int a, int b, Current __current) {
 		System.out.println("MULTIPLY: a = " + a + ", b = " + b + ", result = " + (a*b));
 		return a*b;
+	}
+
+	@Override
+	public double avg(int[] is, Current __current) throws NoData {
+		// TODO Auto-generated method stub
+		int sum = 0; 
+		for (int i = 0; i < is.length; i++) {
+			sum += is[i];
+		}
+		return (double)sum/is.length;
 	}
 
 

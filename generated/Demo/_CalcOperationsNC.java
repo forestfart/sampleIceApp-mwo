@@ -27,4 +27,7 @@ public interface _CalcOperationsNC
     long subtract(int a, int b);
 
     long multiply(int a, int b);
+
+    double avg(int[] is)
+        throws NoData;
 }

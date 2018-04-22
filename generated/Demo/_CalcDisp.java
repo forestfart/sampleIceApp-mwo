@@ -75,6 +75,12 @@ public abstract class _CalcDisp extends Ice.ObjectImpl implements Calc
         return add(a, b, null);
     }
 
+    public final double avg(int[] is)
+        throws NoData
+    {
+        return avg(is, null);
+    }
+
     public final long multiply(int a, int b)
     {
         return multiply(a, b, null);
@@ -133,9 +139,32 @@ public abstract class _CalcDisp extends Ice.ObjectImpl implements Calc
         return Ice.DispatchStatus.DispatchOK;
     }
 
+    public static Ice.DispatchStatus ___avg(Calc __obj, IceInternal.Incoming __inS, Ice.Current __current)
+    {
+        __checkMode(Ice.OperationMode.Normal, __current.mode);
+        IceInternal.BasicStream __is = __inS.startReadParams();
+        int[] is;
+        is = IntSeqHelper.read(__is);
+        __inS.endReadParams();
+        try
+        {
+            double __ret = __obj.avg(is, __current);
+            IceInternal.BasicStream __os = __inS.__startWriteParams(Ice.FormatType.DefaultFormat);
+            __os.writeDouble(__ret);
+            __inS.__endWriteParams(true);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+        catch(NoData ex)
+        {
+            __inS.__writeUserException(ex, Ice.FormatType.DefaultFormat);
+            return Ice.DispatchStatus.DispatchUserException;
+        }
+    }
+
     private final static String[] __all =
     {
         "add",
+        "avg",
         "ice_id",
         "ice_ids",
         "ice_isA",
@@ -160,25 +189,29 @@ public abstract class _CalcDisp extends Ice.ObjectImpl implements Calc
             }
             case 1:
             {
-                return ___ice_id(this, in, __current);
+                return ___avg(this, in, __current);
             }
             case 2:
             {
-                return ___ice_ids(this, in, __current);
+                return ___ice_id(this, in, __current);
             }
             case 3:
             {
-                return ___ice_isA(this, in, __current);
+                return ___ice_ids(this, in, __current);
             }
             case 4:
             {
-                return ___ice_ping(this, in, __current);
+                return ___ice_isA(this, in, __current);
             }
             case 5:
             {
-                return ___multiply(this, in, __current);
+                return ___ice_ping(this, in, __current);
             }
             case 6:
+            {
+                return ___multiply(this, in, __current);
+            }
+            case 7:
             {
                 return ___subtract(this, in, __current);
             }
